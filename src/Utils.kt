@@ -37,3 +37,14 @@ fun String.replace(iterableOfReplacementPairs: Iterable<Pair<String, String>>): 
     }
     return result
 }
+
+/**
+ * Returns the product of all values produced by [selector] function applied to each element in the collection.
+ */
+inline fun <T> Iterable<T>.productOf(selector: (T) -> Int): Int {
+    var product = 1
+    for (element in this) {
+        product *= selector(element)
+    }
+    return product
+}
