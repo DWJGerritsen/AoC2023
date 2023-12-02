@@ -19,3 +19,21 @@ fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteA
  * The cleaner shorthand for printing output.
  */
 fun Any?.println() = println(this)
+
+/**
+ * Returns a new string obtained by replacing all occurrences of the [replacementPair].first substring in this string
+ * with the specified [replacementPair].second string.
+ */
+fun String.replace(replacementPair: Pair<String, String>): String = replace(replacementPair.first, replacementPair.second)
+
+/**
+ * Returns a new string obtained by sequentially replacing all occurrences of the pair.first substring in this
+ * string with the specified pair.second string of each pair in the [iterableOfReplacementPairs].
+ */
+fun String.replace(iterableOfReplacementPairs: Iterable<Pair<String, String>>): String {
+    var result = this
+    iterableOfReplacementPairs.forEach {
+        result = result.replace(it)
+    }
+    return result
+}
