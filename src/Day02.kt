@@ -4,9 +4,7 @@ fun main() {
             it.toGameNumber() to it.toGameMap().toMaxPairs().isValidGame()
         }.sumValidGameNumbers()
 
-    fun part2(input: List<String>): Int = input
-        .map { it.toGameMap().toMaxPairs().toPower() }
-        .sum()
+    fun part2(input: List<String>): Int = input.sumOf { it.toGameMap().toMaxPairs().toPower() }
 
     // test if implementation meets criteria from the description, like:
     val testInput = readInput("Day02_test")

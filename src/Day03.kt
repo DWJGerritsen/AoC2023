@@ -25,7 +25,7 @@ fun main() {
                 val currentParts = pair.first
                 val nextParts = if (index < it.size - 1) it[index + 1].first else listOf()
                 val possibleNeighbouringParts = previousParts + currentParts + nextParts
-                pair.second.forEach {gearIndex ->
+                pair.second.forEach { gearIndex ->
                     partNumbers.add(
                         possibleNeighbouringParts.getNumbersWhen { it.anyIndexOrNeigbourMatches(listOf(gearIndex)) }
                     )
@@ -34,9 +34,9 @@ fun main() {
             partNumbers
         }.filter {
             it.size == 2
-        }.map {
+        }.sumOf {
             it.first() * it.last()
-        }.sum()
+        }
 
     // test if implementation meets criteria from the description, like:
     val testInput = readInput("Day03_test")
@@ -72,7 +72,7 @@ fun String.numberIndexPairs(): List<IndexesNumberPair> {
     forEachIndexed { i, c ->
         if (c.isDigit()) {
             indexList.add(i)
-            if (i === length - 1)
+            if (i == length - 1)
                 indexLists.add(IndexesNumberPair(indexList.toList(), extractNumber(indexList.first(), indexList.last())))
         } else if (indexList.isNotEmpty()) {
             indexLists.add(IndexesNumberPair(indexList.toList(), extractNumber(indexList.first(), indexList.last())))
