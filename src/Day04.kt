@@ -39,9 +39,7 @@ fun List<ScratchCard>.addCopiesForWins() = forEach {scratchCard ->
 }
 
 fun List<String>.mapToScratchCards() = map {
-    it.replace("\\s+".toRegex(), ",").split(':', '|').let {
+    it.whitespaceToComma().split(':', '|').let {
         ScratchCard(it[0].filter { it.isDigit() }.toInt(), it[1].csvToInts(), it[2].csvToInts(), this.size)
     }
 }
-
-fun String.csvToInts(): List<Int> = replace(" ", "").split(',').filter { it.isNotBlank() }.map { it.toInt() }

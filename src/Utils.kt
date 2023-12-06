@@ -48,3 +48,6 @@ inline fun <T> Iterable<T>.productOf(selector: (T) -> Int): Int {
     }
     return product
 }
+
+fun String.whitespaceToComma() = replace("\\s+".toRegex(), ",")
+fun String.csvToInts(): List<Int> = replace(" ", "").split(',').filter { it.isNotBlank() }.map { it.toInt() }
