@@ -58,9 +58,7 @@ fun calculateStepsFrom__ATo__Z(stepOrder: String, nodes: List<Node>): Long {
             if (stepOrder[steps.mod(stepOrder.length)] == 'L') currentNode = currentNode.left
             else currentNode = currentNode.right
             steps++
-            if(currentNode.name[2] == 'Z') nodesEndingInZSteps.add(Pair(currentNode, steps.toInt()).also { it.println() }).also {
-                nodesEndingInZSteps.println()
-            }
+            if(currentNode.name[2] == 'Z') nodesEndingInZSteps.add(Pair(currentNode, steps.toInt()))
         }
         initialStepsLoopLength.add(StepCounter(nodesEndingInZSteps.first().second, nodesEndingInZSteps.last().second-nodesEndingInZSteps.first().second))
         steps = 0
