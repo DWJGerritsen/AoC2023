@@ -1,13 +1,9 @@
 import kotlin.math.abs
 
 fun main() {
-    fun part1(input: List<String>): Int = input.map { it.toList() }.let {
-        PipeMaze(it)
-    }.findLargestDistanceFromStart()
+    fun part1(input: List<String>): Int = PipeMaze(input.map { it.toList() }).findLargestDistanceFromStart()
 
-    fun part2(input: List<String>): Int = input.map { it.toList() }.let {
-        PipeMaze(it)
-    }.countEnclosedTiles()
+    fun part2(input: List<String>): Int = PipeMaze(input.map { it.toList() }).countEnclosedTiles()
 
     // test if implementation meets criteria from the description, like:
     val testInput = readInput("Day10_test")
